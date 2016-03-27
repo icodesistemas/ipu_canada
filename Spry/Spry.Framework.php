@@ -67,6 +67,7 @@ class Spry extends SpryPath{
 
     }
     public function Services(){
+        unset($this->librery->Model);
         return $this->librery;
     }
     public function getView(){
