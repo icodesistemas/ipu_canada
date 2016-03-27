@@ -21,12 +21,4 @@
                 return null;
             }
         }
-
-        public function setDelete($where){
-            // TODO: Implement setDelete() method.
-        }
-
-        public function setUpdate(){
-
-        }
     }
