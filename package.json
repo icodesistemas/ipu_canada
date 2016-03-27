@@ -1,0 +1,27 @@
+{
+  "name" : "CMS",
+  "version" : "0.6",
+  "author" : "Angel bejarano / programador.angel@gmail.com",
+  "view":{
+      "vista-dashboard": "dashboard",
+      "paginas/vista-paginas": "paginas"
+  },
+  "model":{
+      "MPagina":"paginas"
+  },
+  "controller":{
+      "CPagina":"paginas"
+  },
+  "components": {
+      "login" : true
+  },
+  "services" : {
+    "DataBaseSQL" : {
+        "servidor": "127.0.0.1",
+        "usuario":"root",
+        "clave":"130202",
+        "tipo":"mysql",
+        "nombre_base_datos":"db_ipu"
+    }
+  }
+}
