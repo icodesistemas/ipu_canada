@@ -32,6 +32,16 @@
             }
 
         }
+        public function setUpdate($table, $data){
+            try{
+                return $this->DB()->qqUpdate($table, $data);
+
+            }catch(PDOException $e){
+                Spry::setMessageApplication($e->getMessage());
+                return 0;
+            }
+
+        }
         public function setSQLInsert($sql, $data){
             try{
                 return $this->DB()->exec($sql, $data);
