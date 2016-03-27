@@ -35,11 +35,11 @@
         }
         public function setSQLInsert($sql, $data){
             try{
-                retrun $this->DB()->exec($sql, $data);
-                Spry::setMessageApplication("Pagina creada con exito");
-                return 0;
+                return $this->DB()->exec($sql, $data);
+
             }catch(PDOException $e){
                 Spry::setMessageApplication($e->getMessage());
+                return 0;
             }
         }
 
