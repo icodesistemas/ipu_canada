@@ -14,7 +14,6 @@
         private $message;
         // ******* metodos que todo model debera tener
         abstract public function getData($field, $where); // este sera para retornar datos al controlador
-        abstract public function setDelete($where); // este para realizar la implementacion de delete
 
         // ************************************
         function __construct($librery) {
@@ -43,7 +42,19 @@
             }
         }
 
-        public function setCreateSelect($field){
-            //foreach($field)
+        public function setDelete($table, $where, $data = ""){
+            try{
+                $sql = "delete from {$table} where {$where}";
+                if(empty($data)){
+                    $this->DB()->exec($sql);
+                }else{
+                    $this->DB()->exec($sql, $data);
+                }
+
+                return true;
+            }catch(PDOException $e){
+                Spry::setMessageApplication($e->getMessage());
+                return false;
+            }
         }
     }
