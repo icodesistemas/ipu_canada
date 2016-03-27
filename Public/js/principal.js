@@ -24,9 +24,9 @@ function accionBoton(accion, url){
     }
     if(accion == "actualizar"){
         location.href = url+'/'+valor;
-    }else if(btn == "delete"){
+    }else if(accion == "eliminar"){
         if(confirm('¿Desea eliminar el articulo?')){
-            location.href = '/Content/language/list-language?sid=145534c243a7712429daf2837460e726df40c6b2&action=delete-language&language-indx='+valor;
+            location.href = url+'/'+valor;
         }
 
 
