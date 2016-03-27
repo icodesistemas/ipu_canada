@@ -32,11 +32,14 @@
                 'abrir' => addslashes(strip_tags($_POST['open-URL'])),
                 'status' => $status
             );
-            if($action == 'actualziar'){
-                $data = array_merge($data, array('pk_pagina' =>intval($_POST["pk_pagina"]) ));
-                $this->Model()->setUpdate('tb_paginas', $data);
+            if($action == 'actualizar'){
+                $data = array_merge($data, array('pk_pagina' =>intval($_POST["pk"]) ));
+                if($this->Model()->setUpdate('tb_paginas', $data)){
+                    Spry::setMessageApplication("Datos de la pagina actualizados con exito");
+                }
             }else{
                 $this->Model()->setInsert('tb_paginas',$data);
+                Spry::setMessageApplication("Pagina actualizados con exito");
             }
 
         }
@@ -50,5 +53,17 @@
             $where = 'pk_pagina = '.intval($pk);
             $rs = $this->Model()->getData($campos,$where);
             return $rs[0];
+        }
+        public function setDelete($pk){
+            $where = 'pk_pagina = ?';
+            $data = array(intval($pk));
+
+            if($this->Model()->setDelete('tb_paginas', $where, $data)){
+
+                Spry::setMessageApplication("Pagina eliminada");
+            }else{
+
+                Spry::setMessageApplication("SSSSSSSSSSSSsa");
+            }
         }
     }
