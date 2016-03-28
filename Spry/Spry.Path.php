@@ -98,7 +98,7 @@ class SpryPath{
 
                 $info = array(
                     'path' => $path,
-                    'name' => $key
+                    'name' => $val
                 );
 
                 if(!is_readable($path)){
