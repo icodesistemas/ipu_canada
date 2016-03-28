@@ -40,7 +40,6 @@ class SpryPath{
 
     }
     protected function setLoadModel($librery){
-
         $infoModal = $this->getInfoFile($this->conf['model'], 'model');
         if(is_null($infoModal)){
             return null;
@@ -74,7 +73,7 @@ class SpryPath{
 
     /**
      * @param $array es la variable de configuracion que el programador definio en el index de la aplicacion y que el
-     *          framework se la paso en el constructor a la clase CapitanFramework
+     *          framework se la paso en el constructor a la clase SpryFramework
      * @return $path retorna la ruta donde se encuentra el archivo
      */
     protected function getInfoFile($array, $type){
@@ -85,9 +84,32 @@ class SpryPath{
             );
             return $info;
         }
-        foreach($array as $key => $val){
 
-            if($val == $this->view){
+        $path = "";
+        foreach($array as $key => $val){
+            if($key == $this->view){
+                if($type == "controller"){
+                    $path = __APPLICATION_PATH.'/'.__APPLICATION_FOLDER_CONTROLLER.'/'.$val.'.class.php';
+                }else if($type == "view"){
+                    $path = __APPLICATION_PATH.'/'.__APPLICATION_FOLDER_VIEW.'/'.$val.'.php';
+                }else if($type == "model"){
+                    $path = __APPLICATION_PATH.'/'.__APPLICATION_FOLDER_MODEL.'/'.$val.'.class.php';
+                }
+
+                $info = array(
+                    'path' => $path,
+                    'name' => $key
+                );
+
+                if(!is_readable($path)){
+                    die($type." NO encontrado");
+                    //header("Location: /404");
+                }else{
+                    return $info;
+                }
+            }
+
+            /*if($val == $this->view){
                 if($type == "controller"){
                     $path = __APPLICATION_PATH.'/'.__APPLICATION_FOLDER_CONTROLLER.'/'.$key.'.class.php';
                 }else if($type == "view"){
@@ -107,7 +129,7 @@ class SpryPath{
                 }else{
                     return $info;
                 }
-            }
+            }*/
 
         }
     }
