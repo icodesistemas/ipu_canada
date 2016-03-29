@@ -9,16 +9,22 @@
       data-on-error-input="notifyOnErrorInput"
       data-show-error-hint="false">
     <input type="hidden" name="action" value="<?=$action?>">
-    <input type="hidden" name="pk" value="<?= (isset($rs["pk_pagina"]) ? $rs["pk_pagina"] : '') ?>">
+    <input type="hidden" name="pk" value="<?= (isset($rs["pk_pagina"]) ? $rs["pk_idioma"] : '') ?>">
 
     <div class="input-control text" style="width: 20%">
         <label>Codigo Idiomas</label>
-        <input type="text" name="codigo_idioma" data-validate-func="required" data-validate-hine="This field can not be empty!">
+        <input type="text" name="codigo_idioma" <?= $soloLentura ?> value="<?= (isset($rs["pk_idioma"]) ? $rs["pk_idioma"] : '') ?>" data-validate-func="required" data-validate-hine="This field can not be empty!">
     </div>
     <p class="clear"></p>
     <div class="input-control text" style="width: 60%">
         <label>Nombre del Idiomas</label>
-        <input type="text" name="nombre_idioma" data-validate-func="required" data-validate-hine="This field can not be empty!">
+        <input type="text" name="nombre_idioma" value="<?= (isset($rs["nombre_idioma"]) ? $rs["nombre_idioma"] : '') ?>"  data-validate-func="required" data-validate-hine="This field can not be empty!">
     </div>
+    <p class="clear"></p>
+    <label class="switch">Idioma Activo?</label>
+    <label class="switch">
+        <input type="checkbox" name="idioma-activo" <?=(isset($rs["status_idioma"]) ? 'checked = "checked"' : '') ?>>
+        <span class="check"></span>
+    </label>
     <div class="clear"></div>
 </form>

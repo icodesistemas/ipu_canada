@@ -37,12 +37,12 @@
                                 <span class="check"></span>
                             </label>
                         </td>
-                        <td>'.$value['pagina_es'].'</td>
-                        <td>'.$value['titulo_es'].'</td>
+                        <td>'.$value['pagina'].'</td>
+                        <td>'.$value['titulo'].'</td>
                         <td>
-                                '.$value['url_es'].'
+                                '.$value['url'].'
                         </td>
-                        <td>'.$value['descripcion_es'].'</td>
+                        <td>'.$value['descripcion'].'</td>
                         <td>
                             <label class="switch">
                                 <input type="checkbox" name="pagina-activa" '.$check.'>

@@ -5,6 +5,7 @@
     class CPagina extends SpryController{
 
         public function action(){
+
             if( isset($_REQUEST["action"])){
                 switch($_REQUEST["action"]){
                     case 'guardar':
@@ -12,6 +13,12 @@
                         break;
                     case 'actualizar':
                         $this->setGuarEditar('actualizar');
+                        break;
+                    case 'guardar-idioma':
+                        $this->setGuarEditarIdiomas('guardar');
+                        break;
+                    case 'actualizar-idioma':
+                        $this->setGuarEditarIdiomas('actualizar');
                         break;
                 }
             }
@@ -25,10 +32,10 @@
                 $status = 'I';
             }
             $data = array(
-                'pagina_es' => addslashes(strip_tags($_POST['seccion'])),
-                'url_es' => $url,
-                'descripcion_es' => addslashes(strip_tags($_POST['descrip'])),
-                'titulo_es' => addslashes(strip_tags($_POST['titulo'])),
+                'pagina' => addslashes(strip_tags($_POST['seccion'])),
+                'url' => $url,
+                'descripcion' => addslashes(strip_tags($_POST['descrip'])),
+                'titulo' => addslashes(strip_tags($_POST['titulo'])),
                 'abrir' => addslashes(strip_tags($_POST['open-URL'])),
                 'status' => $status
             );
@@ -44,14 +51,14 @@
 
         }
         public function getListadoPaginas(){
-            $campos = 'pk_pagina,pagina_es, titulo_es, url_es, descripcion_es,status';
-            return $this->Model()->getData($campos);
+            $campos = 'pk_pagina,pagina, titulo, url, descripcion,status';
+            return $this->Model()->getData('tb_paginas',$campos);
 
         }
         public function getDatosPagina($pk){
-            $campos = 'pk_pagina,pagina_es, titulo_es, url_es, descripcion_es,status, abrir';
+            $campos = 'pk_pagina,pagina, titulo, url, descripcion,status, abrir';
             $where = 'pk_pagina = '.intval($pk);
-            $rs = $this->Model()->getData($campos,$where);
+            $rs = $this->Model()->getData('tb_paginas',$campos,$where);
             return $rs[0];
         }
         public function setDelete($pk){
@@ -64,6 +71,47 @@
             }else{
 
                 Spry::setMessageApplication("SSSSSSSSSSSSsa");
+            }
+        }
+        public function getDatosIdioma($pk){
+            $campos = "*";
+            $where = "pk_idioma = '".addslashes(strip_tags($pk))."'";
+
+            $rs = $this->Model()->getData('tb_idiomas',$campos,$where);
+            return $rs[0];
+
+        }
+
+        /**
+         * @return array con todos los datos encontrados en la tabla
+         */
+        public function getListadoIdiomas(){
+            $campos = '*';
+            $rs = $this->Model()->getData('tb_idiomas',$campos);
+            return $rs;
+
+        }
+        private function setGuarEditarIdiomas($accion){
+
+            if(isset($_POST['idioma-activo'])){
+                $status = 'A';
+            }else{
+                $status = 'I';
+            }
+            $data = array(
+                'pk_idioma' => addslashes(strip_tags($_POST['codigo_idioma'])),
+                'nombre_idioma' => addslashes(strip_tags($_POST['nombre_idioma'])),
+                'status_idioma' => $status,
+
+            );
+            if($accion == 'actualizar'){
+                $data = array_merge($data, array('pk_pagina' =>intval($_POST["pk"]) ));
+                if($this->Model()->setUpdate('tb_idiomas', $data)){
+                    Spry::setMessageApplication("Datos del idioma actualizados con exito");
+                }
+            }else{
+                $this->Model()->setInsert('tb_idiomas',$data);
+                Spry::setMessageApplication("Idioma registrado con exito");
             }
         }
     }

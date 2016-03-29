@@ -17,6 +17,7 @@
             include 'listado.php';
         }else{
             if($Spry->getParameterUrl(2) =='buscar' && is_numeric($Spry->getParameterUrl(3))){
+
                 $rs = $Spry->Services()->Controller->getDatosPagina($Spry->getParameterUrl(3));
                 $action = 'actualizar';
             }else{

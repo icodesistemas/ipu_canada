@@ -2,6 +2,7 @@
 <hr class="thin bg-grayLighter"><br>
 <button form = "form-section" class = "button primary"><span class="mif-floppy-disk"></span> Guardar...</button>
 <a href="/paginas/listado" class="button warning"><span class="mif-list2"></span> Listados</a>
+<a href="/paginas" class="button default"><span class="mif-layers"></span> Limpiar</a>
 
 <hr class="thin bg-grayLighter"><br>
 
@@ -12,10 +13,11 @@
     <input type="hidden" name="action" value="<?=$action?>">
     <input type="hidden" name="pk" value="<?= (isset($rs["pk_pagina"]) ? $rs["pk_pagina"] : '') ?>">
 
+
     <section style="width:70%; float:left;">
         <div class="input-control text" style="width: 91%">
             <label>Sección</label>
-            <input type="text" autofocus="on" placeholder="Nombre o Título de la Sección" value = "<?= (isset($rs["pagina_es"]) ? $rs["pagina_es"] : '') ?>" name="seccion" data-validate-func="required"
+            <input type="text" autofocus="on" placeholder="Nombre o Título de la Sección" value = "<?= (isset($rs["pagina"]) ? $rs["pagina"] : '') ?>" name="seccion" data-validate-func="required"
                    data-validate-hine="This field can not be empty!">
             <span class="input-state-error mif-warning"></span>
 
@@ -24,18 +26,18 @@
         <br><br>
         <div class="input-control text" style="width: 44%">
             <label>Título</label>
-            <input type="text" placeholder="Título de la sección" value="<?= (isset($rs["titulo_es"]) ? $rs["titulo_es"] : '') ?>" name="titulo" required="required">
+            <input type="text" placeholder="Título de la sección" value="<?= (isset($rs["titulo"]) ? $rs["titulo"] : '') ?>" name="titulo" required="required">
         </div>
         <div class="input-control text" style="width: 44%">
             <label>Descripción</label>
-            <input type="text" placeholder="Descripcion de la razon de la sección" value="<?=(isset($rs["descripcion_es"]) ? $rs["descripcion_es"] : '') ?>" maxlength="200" name="descrip" required="required">
+            <input type="text" placeholder="Descripcion de la razon de la sección" value="<?=(isset($rs["descripcion"]) ? $rs["descripcion"] : '') ?>" maxlength="200" name="descrip" required="required">
         </div>
 
         <div class="clear"></div>
         <br><br>
         <div class="input-control text">
             <label>URL</label>
-            <input type="text" value="<?=(isset($rs["url_es"]) ? $rs["url_es"] : '') ?>" name="URL">
+            <input type="text" value="<?=(isset($rs["url"]) ? $rs["url"] : '') ?>" name="URL">
         </div>
         <div class="input-control text">
             <label>Abrir URL en:</label>

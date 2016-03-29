@@ -6,11 +6,11 @@
     class MPagina extends SpryModel{
         private $Tabla;
 
-        public function getData($field, $where = null){
+        public function getData($table,$field, $where = null){
             if(!empty($where)){
-                $sql = "select {$field} from tb_paginas where {$where}";
+                $sql = "select {$field} from {$table} where {$where}";
             }else{
-                $sql = "select {$field} from tb_paginas ";
+                $sql = "select {$field} from {$table} ";
             }
 
             try{
