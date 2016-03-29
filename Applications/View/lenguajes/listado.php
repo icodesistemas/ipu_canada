@@ -19,7 +19,8 @@
     </thead>
     <tbody>
     <?php
-    $rs =  $Spry->Services()->Controller->getListadoPaginas();
+    $rs =  $Spry->Services()->Controller->getListadoIdiomas();
+
     if(!is_null($rs)){
         foreach ($rs as $key => $value) {
             if($value['status_idioma'] == 'A'){
