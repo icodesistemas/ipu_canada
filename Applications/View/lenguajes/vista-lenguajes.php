@@ -10,8 +10,8 @@
 <div id="right">
     <?php
     if($Spry->getParameterUrl(2) == 'listado'){
-        if($Spry->getParameterUrl(3) == "eliminar" && is_numeric($Spry->getParameterUrl(4))){
-            $Spry->Services()->Controller->setDelete($Spry->getParameterUrl(4));
+        if($Spry->getParameterUrl(3) == "eliminar" && !empty($Spry->getParameterUrl(4))){
+            $Spry->Services()->Controller->setDeleteIdiomas($Spry->getParameterUrl(4));
         }
 
         include 'listado.php';

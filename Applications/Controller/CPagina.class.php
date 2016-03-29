@@ -114,4 +114,13 @@
                 Spry::setMessageApplication("Idioma registrado con exito");
             }
         }
+        public function setDeleteIdiomas($pk){
+            $where = "pk_idioma = ?";
+            $data = array(addslashes(strip_tags($pk)));
+
+            if($this->Model()->setDelete('tb_idiomas', $where, $data)){
+
+                Spry::setMessageApplication("Idioma eliminado");
+            }
+        }
     }

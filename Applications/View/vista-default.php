@@ -10,8 +10,6 @@
             <span class="placeholder">Campo de Usuario</span>
             <span class="icon mif-user"></span>
         </div>
-
-
         <br />
         <div class="input-control modern password iconic" data-role="input" style="width: 90%">
             <input type="password" name="user_password" id="user_password">
