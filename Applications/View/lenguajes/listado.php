@@ -2,7 +2,7 @@
 <h1 class="text-light">Listado de página web<span class="mif-section place-right"></span></h1>
 <hr class="thin bg-grayLighter"><br>
 
-<a href="/idiomas" class = "button primary"><span class="mif-plus"></span> Nuevo</a>
+<a href="/paginas" class = "button primary"><span class="mif-plus"></span> Nuevo</a>
 <a class="button warning" onclick="accionBoton('actualizar','/idiomas/buscar')"><span class="mif-loop2"></span> Actualizar</a>
 <a class="button alert" onclick="accionBoton('eliminar','/idiomas/listado/eliminar')"><span class="mif-cross"></span> Eliminar</a>
 
@@ -51,7 +51,3 @@
     ?>
     </tbody>
 </table>
-
-<script>
-
-</script>
