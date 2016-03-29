@@ -3,14 +3,17 @@
   "version" : "0.6",
   "author" : "Angel bejarano / programador.angel@gmail.com",
   "view":{
-      "vista-dashboard": "dashboard",
-      "paginas/vista-paginas": "paginas"
+      "dashboard":"vista-dashboard",
+      "paginas":"paginas/vista-paginas",
+      "idiomas":"lenguajes/vista-lenguajes"
   },
   "model":{
-      "MPagina":"paginas"
+      "paginas":"MPagina",
+      "idiomas":"MPagina"
   },
   "controller":{
-      "CPagina":"paginas"
+      "paginas":"CPagina",
+      "idiomas":"CPagina"
   },
   "components": {
       "login" : true
