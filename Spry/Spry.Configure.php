@@ -16,6 +16,8 @@
 
     /** @var  $file contiene la ruta al archivo package.json que contiene la configuracion general de la aplicacion */
     $file = __APPLICATION_PATH."/package.json";
+    $_SESSION['__APPLICATION_PATH'] = __APPLICATION_PATH;
+
     if(!file_exists($file)){
         die("por favo configure el archivo package.json");
     }
