@@ -109,10 +109,16 @@
 			return $str;
 		}
 
+		/**
+		 * @param $table Nombre de la tabla a consultar
+		 * @param $field Deben ser 2 campos de la tabla separados por coma
+		 * @param string $where Es un parametro opcional para
+		 * @return string
+		 */
 		public function getLoadCombo($table, $field, $where = ""){
 			/*crear los 2 campos necesarios*/
 			$campos = explode(",", $field);
-			if(!empty($where)){
+			if(empty($where)){
 				$sql = "select {$field} from {$table} ";
 			}else{
 				$sql = "select {$field} from {$table} where {$where} ";
@@ -120,7 +126,7 @@
 			$rs = $this->db->getArray($sql);
 			$option = '';
 			foreach($rs as $key => $val){
-				$option .= '<option value = " '.$val[$campos[0]].' ">'.$val[$campos[1]].'</option>';
+				$option .= '<option value = "'.$val[trim($campos[0])].'">'.$val[trim($campos[1])].'</option>';
 			}
 			return $option;
 		}
