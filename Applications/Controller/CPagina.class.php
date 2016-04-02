@@ -37,7 +37,8 @@
                 'descripcion' => addslashes(strip_tags($_POST['descrip'])),
                 'titulo' => addslashes(strip_tags($_POST['titulo'])),
                 'abrir' => addslashes(strip_tags($_POST['open-URL'])),
-                'status' => $status
+                'status' => $status,
+                'pk_pagina_padre' => addslashes(strip_tags($_POST['cb-padre']))
             );
             if($action == 'actualizar'){
                 $data = array_merge($data, array('pk_pagina' =>intval($_POST["pk"]) ));
@@ -56,7 +57,7 @@
 
         }
         public function getDatosPagina($pk){
-            $campos = 'pk_pagina,pagina, titulo, url, descripcion,status, abrir';
+            $campos = 'pk_pagina,pagina, titulo, url, descripcion,status, abrir,pk_pagina_padre';
             $where = 'pk_pagina = '.intval($pk);
             $rs = $this->Model()->getData('tb_paginas',$campos,$where);
             return $rs[0];
@@ -101,7 +102,7 @@
             $data = array(
                 'pk_idioma' => addslashes(strip_tags($_POST['codigo_idioma'])),
                 'nombre_idioma' => addslashes(strip_tags($_POST['nombre_idioma'])),
-                'status_idioma' => $status,
+                'status_idioma' => $status
 
             );
             if($accion == 'actualizar'){
