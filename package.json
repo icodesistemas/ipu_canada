@@ -5,7 +5,8 @@
   "view":{
       "dashboard":"vista-dashboard",
       "paginas":"paginas/vista-paginas",
-      "idiomas":"lenguajes/vista-lenguajes"
+      "idiomas":"lenguajes/vista-lenguajes",
+      "publicacion" : "publicaciones/vista-publicaciones"
   },
   "model":{
       "paginas":"MPagina",
