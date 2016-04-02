@@ -24,7 +24,7 @@
 
 
     $framework = new SpryBase();
-    $framework->Functions = new SpryFuncions();
+
 
     if(isset($conf["services"]["DataBaseSQL"])){
         $framework->DB = new DataBase($conf["services"]["DataBaseSQL"]);
@@ -36,7 +36,7 @@
     if(isset($conf["services"]["Correos"])){
         $framework->Mail = new ServiceMail($conf["services"]["Correos"]);
     }
-
+    $framework->Functions = new SpryFuncions($framework->DB);
     $Spry = new Spry($framework, $conf);
     $Spry->setLoadApplication();
 
