@@ -3842,7 +3842,7 @@ a.tag {
 }
 .button.default {
   background-color: #008287;
-  color: #fff;
+  color: #fff; border:1px solid transparent;
 }
 .button:hover {
   border-color: #787878;
@@ -10075,7 +10075,6 @@ input[type="submit"].link:active {
 .tabcontrol2 .tabs li.active a {
   background-color: #1ba1e2;
   color: #ffffff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 .tabcontrol2 .tabs li.disabled a {
   background: #eeeeee linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -10188,7 +10187,7 @@ input[type="submit"].link:active {
   background-color: #eeeeee;
 }
 .tabcontrol2 .frames {
-  z-index: 1;
+  z-index: 1; padding-top: 12px;
   border: 1px #eeeeee solid;
 }
 .tabcontrol2 .frames .frame {
