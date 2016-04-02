@@ -2,7 +2,12 @@
 	
 
 	class SpryFuncions{
-		private static $semilla = "bWVyY2Fkb3MgZ3JhdGlzIHR1bWJhcmEgYSBtZXJjYWRvIGxpYnJl";	
+		private static $semilla = "bWVyY2Fkb3MgZ3JhdGlzIHR1bWJhcmEgYSBtZXJjYWRvIGxpYnJl";
+		private $db;
+
+		public function __construct($db){
+			$this->db = $db;
+		}
 
 		public  function getCrearUrl($str){
 			$str = trim(strip_tags(strtolower($str)));
@@ -102,6 +107,22 @@
 			$str = str_replace('ò','o',$str);
 
 			return $str;
+		}
+
+		public function getLoadCombo($table, $field, $where = ""){
+			/*crear los 2 campos necesarios*/
+			$campos = explode(",", $field);
+			if(!empty($where)){
+				$sql = "select {$field} from {$table} ";
+			}else{
+				$sql = "select {$field} from {$table} where {$where} ";
+			}
+			$rs = $this->db->getArray($sql);
+			$option = '';
+			foreach($rs as $key => $val){
+				$option .= '<option value = " '.$val[$campos[0]].' ">'.$val[$campos[1]].'</option>';
+			}
+			return $option;
 		}
 	}
 ?>
