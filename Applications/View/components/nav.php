@@ -7,6 +7,10 @@
     <li><a href="#"><span class="mif-image icon"></span> Photo</a></li>
     <li class="menu-title">Administración de la Página Web</li>
     <li>
+        <a href="/publicacion"><span class="mif-language icon"></span> Publicaciones</a>
+
+    </li>
+    <li>
         <a href="/idiomas"><span class="mif-language icon"></span> Idiomas</a>
 
     </li>
