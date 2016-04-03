@@ -61,6 +61,7 @@ function handleFileSelect(evt) {
                     /*es la imagen que se muestra en el primer momento que cargan el formulario de subir imagenes*/
                     var imgReferencia = $('#' + objHtml + " img").attr('src');
                     $('#' + objHtml + " img").attr('src', dataurl);
+                    $('#' + objHtml + " i").remove();
 
                     document.getElementById('hidden_data').value = dataurl;
                     var fd = new FormData(document.forms["form1"]);
@@ -88,8 +89,10 @@ function handleFileSelect(evt) {
                         $('#barra-progreso').hide();
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             $('#barra-progreso').hide();
-                            element = '<input type = "hidden" name = "galeria_image[]" values = "' + xmlhttp.responseText + '">  ';
-                            $('#' + objHtml).append(element);
+                            element = '<input type = "hidden" name = "galeria_image[]" values = "' + xmlhttp.responseText + '"> ';
+                            deleteElement = '<i class="delete" onclick="eliminarImagen(\''+xmlhttp.responseText+'\')">Eliminar</i>';
+                            $('#' + objHtml).append(element+deleteElement);
+                            $('#continuar-paso-2').show();
                         } else if (xmlhttp.status == 413) {
                             $('#' + objHtml + " img").attr('src', imgReferencia);
                             alert('Imagen no soportada, es muy grande');
@@ -105,6 +108,17 @@ function handleFileSelect(evt) {
         //}
     }else{
         alert("Archivo no soportado");
+    }
+
+}
+function eliminarImagen(img){
+    if(confirm('Desea eliminar la imagen?')){
+        alert(img);
+        if (window.XMLHttpRequest) {
+            var xmlhttp = new XMLHttpRequest();
+        } else {
+            var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
     }
 
 }

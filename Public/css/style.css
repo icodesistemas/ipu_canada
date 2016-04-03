@@ -17,10 +17,17 @@ header>.nombre-aplicacion{margin: 0;color: white; width: 400px; float: left}
 #menu-usuario{margin-top: 6px;}
 .clear{clear: both; margin-top: 4px; padding-top: 4px;}
 #menu-usuario-despligue{background: #0072c6 none repeat scroll 0 0; right: 0;top: 40px;width: 220px;}
-.icon-foto{width: 120px; height: 120px; padding: 10px; border:1px dashed #aaa; cursor: pointer; transition: all 40ms ;
-    float: left; margin-right: 12px; margin-bottom: 12px; position: relative}
+.icon-foto{width: 160px; height: 100px; text-align: center;  padding: 10px; border:1px dashed #aaa; cursor: pointer; transition: all 40ms ;
+    float: left; margin-right: 20px; margin-bottom: 40px; position: relative}
 .icon-foto:hover{box-shadow: 1px 2px 3px #ccc;}
-.icon-foto>i{font-weight: bold; font-size: 9pt; position: absolute; bottom: 4px; left: 16px;}
+.icon-foto>i{font-weight: bold; font-size: 9pt; position: absolute; bottom: -19px; left: 0px; width: 160px; cursor: pointer; z-index: 99}
 #barra-progreso{display: none; transition: 200ms; width: 320px; position: relative; margin: 0 auto}
 #barra-progreso > p{text-align: center; margin-top: 4px;}
 #barra-progreso > progress{width: 100%}
+.icon-foto>img{max-width: 100%; max-height: 100%}
+.delete{color: red}
+.continuar{width: 40px; height: 40px; border-radius: 100px; background: #0072c6; cursor: pointer; position: absolute; right: 6px; top: -4px;}
+.continuar:hover{border: 1px solid #1d1d1d; background: white}
+.continuar>span{text-align: center; position: relative;  margin-left: 12px;
+    margin-top: 12px;}
+#continuar-paso-2{display: none;}

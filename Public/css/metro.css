@@ -10187,7 +10187,7 @@ input[type="submit"].link:active {
   background-color: #eeeeee;
 }
 .tabcontrol2 .frames {
-  z-index: 1; padding-top: 12px;
+  z-index: 1; padding-top: 12px; position: relative;
   border: 1px #eeeeee solid;
 }
 .tabcontrol2 .frames .frame {

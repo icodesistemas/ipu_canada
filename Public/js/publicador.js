@@ -78,4 +78,13 @@ $(function(){
 
         })
     });
+
+    $('#continuar-paso-2').click(function(){
+        $('#tab-multimedia').removeClass('active');
+        $('#multimedia').hide();
+
+        $('#tab-detalle').removeClass('disabled')
+        $('#tab-detalle').addClass('active');
+        $('#detalle').show();
+    })
 })
