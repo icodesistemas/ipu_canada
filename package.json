@@ -21,9 +21,9 @@
   },
   "services" : {
     "DataBaseSQL" : {
-        "servidor": "127.0.0.1",
+        "servidor": "localhost",
         "usuario":"root",
-        "clave":"130202",
+        "clave":"130202@Ngel",
         "tipo":"mysql",
         "nombre_base_datos":"db_ipu"
     }
