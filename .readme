@@ -33,3 +33,7 @@ server{
 
         }
 }
+
+
+#para solucionar 403 de nginx
+chcon -Rt httpd_sys_content_t /home/abejarano1/Documentos/Proyectos/
