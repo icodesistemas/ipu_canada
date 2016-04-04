@@ -38,6 +38,10 @@
     if(isset($conf["services"]["Correos"])){
         $framework->Mail = new ServiceMail($conf["services"]["Correos"]);
     }
+    /*Componente que maneja imagenes*/
+    require_once "Components/Image/SpryImage.php";
+    $framework->Image = new SpryImage();
+
     $framework->Functions = new SpryFuncions($framework->DB);
     $Spry = new Spry($framework, $conf);
     $Spry->setLoadApplication();
