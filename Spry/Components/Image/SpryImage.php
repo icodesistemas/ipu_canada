@@ -41,7 +41,7 @@ class SpryImage{
     public static function setDeleteImage($src){
         unlink($src);
     }
-    public static function setDeleteThumbnail($src, $identify){
+    public static function setDeleteThumbnail($src, $identify = "thumb_"){
         $Thumb = explode("/", $src);
         $Thumbnail = "";
         $i = 0;

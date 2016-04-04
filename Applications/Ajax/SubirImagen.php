@@ -1,5 +1,13 @@
 <?php
     session_start();
+    ini_set("display_errors", 1);
+
+    define("__APPLICATION_PATH",$_SESSION["__APPLICATION_PATH"]);
+    define("__APPLICATION_FOLDER_MODEL", "Applications/Model");
+    define("__APPLICATION_FOLDER_CONTROLLER", "Applications/Controller");
+    define("__APPLICATION_FOLDER_VIEW", "Applications/View");
+    require_once  __APPLICATION_PATH."/Spry/Spry.Configure.php";
+
     $upload_dir = $_SESSION["__APPLICATION_PATH"]."/Cluster/";
 
     if(isset($_REQUEST['action'])){
@@ -14,8 +22,10 @@
     }
 
     function eliminarImagen(){
-        global $upload_dir;
-        unlink($_SESSION["__APPLICATION_PATH"].$_GET['img']);
+        $img = $_SESSION["__APPLICATION_PATH"].$_GET['img'];
+        SpryImage::setDeleteImage($img);
+        SpryImage::setDeleteThumbnail($img);
+
     }
 
     function subirImagen(){
@@ -28,6 +38,8 @@
         $file = $upload_dir . mktime() . ".png";
 
         $success = file_put_contents($file, $data);
+        SpryImage::setImagen($file,1200,1200);
+        SpryImage::setCreateThumbnail($file,100,100);
         echo "/Cluster/".str_replace($upload_dir,'',$file);
     }
 ?>
