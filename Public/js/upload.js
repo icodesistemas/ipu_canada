@@ -2,6 +2,7 @@ var input=document.createElement('input');
 input.type="file";
 
 var objHtml;
+var cantidad_imagen = 6;
 //$(input).click();
 
 $(function(){
@@ -89,10 +90,11 @@ function handleFileSelect(evt) {
                         $('#barra-progreso').hide();
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             $('#barra-progreso').hide();
-                            element = '<input type = "hidden" name = "galeria_image[]" values = "' + xmlhttp.responseText + '"> ';
-                            deleteElement = '<i class="delete" onclick="eliminarImagen(\''+xmlhttp.responseText+'\')">Eliminar</i>';
+                            element = '<input type = "hidden" id = "input_'+objHtml+'" name = "galeria_image[]" values = "' + xmlhttp.responseText + '"> ';
+                            deleteElement = '<i class="delete" onclick="eliminarImagen(\''+xmlhttp.responseText+'\',\''+objHtml+'\')">Eliminar</i>';
                             $('#' + objHtml).append(element+deleteElement);
                             $('#continuar-paso-2').show();
+                            cantidad_imagen = cantidad_imagen - 1;
                         } else if (xmlhttp.status == 413) {
                             $('#' + objHtml + " img").attr('src', imgReferencia);
                             alert('Imagen no soportada, es muy grande');
@@ -111,14 +113,27 @@ function handleFileSelect(evt) {
     }
 
 }
-function eliminarImagen(img){
+function eliminarImagen(img, obj){
     if(confirm('Desea eliminar la imagen?')){
-        alert(img);
+
         if (window.XMLHttpRequest) {
             var xmlhttp = new XMLHttpRequest();
         } else {
             var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
+        xmlhttp.open("GET", "/Applications/Ajax/SubirImagen.php?action=eliminar_imagen&img="+img, true);
+        xmlhttp.send();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                $('#input_'+obj).on().remove();
+                $('#' + obj + " img").attr('src', '/Public/img/ico-photo.png');
+                $('#' + obj + " i").on().remove();
+                cantidad_imagen = cantidad_imagen + 1;
+                if(cantidad_imagen == 6){
+                    $("#continuar-paso-2").hide();
+                }
+            }
+        };
     }
 
 }

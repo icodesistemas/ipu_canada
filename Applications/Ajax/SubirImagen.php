@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $upload_dir = $_SESSION["__APPLICATION_PATH"]."/Cluster/";
 
     if(isset($_REQUEST['action'])){
         switch($_REQUEST['action']){
@@ -13,11 +14,12 @@
     }
 
     function eliminarImagen(){
-
+        global $upload_dir;
+        unlink($_SESSION["__APPLICATION_PATH"].$_GET['img']);
     }
 
     function subirImagen(){
-        $upload_dir = $_SESSION["__APPLICATION_PATH"]."/Cluster/";
+        global $upload_dir;
         $img = $_POST['hidden_data'];
         $img = str_replace('data:image/png;base64,', '', $img);
         $img = str_replace(' ', '+', $img);
