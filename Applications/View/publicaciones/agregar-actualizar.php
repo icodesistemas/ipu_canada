@@ -35,6 +35,7 @@
     </div>
 
     <input type="hidden" name="action" value="<?= $action ?>">
+    <input type="hidden" name="pk" value="<?= (isset($rs['datos']['pk_publicacion']) ? $rs['datos']['pk_publicacion'] : '') ?>">
 
 </form>
 <form method="post" accept-charset="utf-8" name="form1">

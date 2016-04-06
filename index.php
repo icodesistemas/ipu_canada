@@ -1,6 +1,6 @@
 <?php
     session_start();
-
+    ini_set('display_errors',1);
 
     define("__APPLICATION_PATH", (__dir__ ));
     define("__APPLICATION_FOLDER_MODEL", "Applications/Model");

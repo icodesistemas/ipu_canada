@@ -1,4 +1,45 @@
-<div class="continuar" id="continuar-paso-2">
+<?php
+    /* si la accion sera actualiazr entonces mostramos de una ves el flecha de continuar */
+    $imagenes = "";
+    if($action == 'actualizar-articulo'){
+        $style = 'style = "display:block" ';
+        /* cargar todas las imagenes para ser mostradas al usuario */
+
+        $key = 0;
+        foreach($rs['multimedia'] as $key => $val){
+            $imagenes .= '
+                <div class="icon-foto" id="photo'.$key.'">
+                    <img src="'.$val['url_archivo'].'"  onclick="uploadImage(\'photo'.$key.'\')">
+                    <i onclick="eliminarImagen(\''.$val['url_archivo'].'\',\'photo'.$key.'\')" class="delete">Eliminar</i>
+                    <input type="hidden" value="'.$val['url_archivo'].'" name="galeria_image[]" id="input_photo1">
+                </div>
+            ';
+        }
+        /* si $key es menor que 6 se le coloca al usuario la posibilidad de cargar mas fotos */
+        if($key < 6){
+            for($i = $key + 1; $i <6; $i++){
+                $imagenes .= '
+                    <div class="icon-foto" id="photo'.$i.'">
+                        <img src="/Public/img/ico-photo.png"  onclick="uploadImage(\'photo'.$i.'\')">
+                        <i></i>
+                    </div>
+                ';
+            }
+        }
+    }else{
+        $style = 'style = "display:none" ';
+        for($i = 0; $i <6; $i++){
+            $imagenes .= '
+                    <div class="icon-foto" id="photo'.$i.'">
+                        <img src="/Public/img/ico-photo.png"  onclick="uploadImage(\'photo'.$i.'\')">
+                        <i></i>
+                    </div>
+                ';
+        }
+    }
+
+?>
+<div <?= $style ?> class="continuar" id="continuar-paso-2">
     <span class="mif-arrow-right icon"></span>
 </div>
 <div id="barra-progreso">
@@ -6,25 +47,11 @@
     <p>100 %</p>
 </div>
 
-<div class="icon-foto" id="photo">
-    <img src="/Public/img/ico-photo.png"  onclick="uploadImage('photo')">
-    <i>Foto principal</i>
-</div>
-<div class="icon-foto" id="photo1">
-    <img src="/Public/img/ico-photo.png" onclick="uploadImage('photo1')">
-</div>
-<div class="icon-foto" id="photo2">
-    <img src="/Public/img/ico-photo.png" onclick="uploadImage('photo2')">
-</div>
-<div class="clear"></div>
-<div class="icon-foto" id="photo3">
-    <img src="/Public/img/ico-photo.png" onclick="uploadImage('photo3')">
-</div>
-<div class="icon-foto" id="photo4" >
-    <img src="/Public/img/ico-photo.png" onclick="uploadImage('photo4')">
-</div>
-<div class="icon-foto" id="photo5">
-    <img src="/Public/img/ico-photo.png" onclick="uploadImage('photo5')">
+<strong>Imagenes:</strong>
+<hr class="thin bg-grayLighter">
+<div style="width: 50%; float: left">
+    <?= $imagenes ?>
+    <div class="clear"></div>
 </div>
 
 <div class="clear"></div>

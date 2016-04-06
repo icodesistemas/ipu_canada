@@ -7,7 +7,7 @@
                     case 'guardar-articulo':
                         $this->setGuardarEditarPublicacion('agregar');
                         break;
-                    case 'edit-articulo':
+                    case 'actualizar-articulo':
                         $this->setGuardarEditarPublicacion('actualizar');
                         break;
                 }
@@ -35,9 +35,8 @@
             if($action == 'actualizar'){
                 $pk_publicacion = $_POST["pk"];
                 $data = array_merge($data, array('pk_publicacion' =>intval($_POST["pk"]) ));
-                if($this->Model()->setUpdate('tb_publicaciones', $data)){
-                    $msj = "Publicacion actualizada con exito";
-                }
+                $this->Model()->setUpdate('tb_publicaciones', $data);
+                $msj = "Publicacion actualizada con exito";
             }else{
                 $pk_publicacion = $this->Model()->setInsert('tb_publicaciones',$data);
                 $msj = "Pagina registrada con exito";
@@ -52,6 +51,7 @@
             if(!isset($_POST['galeria_image'])){
                 return false;
             }
+            $this->Model()->setEliminarMultimedia($pk_publicacion);
             foreach($_POST['galeria_image'] as $key => $val){
                 $data = array(
                     'fk_pk_publicacion' => $pk_publicacion,
@@ -89,5 +89,19 @@
            $datos = array_merge($datos, array('multimedia' =>$rs));
 
            return $datos;
+       }
+       public function setDelete($pk){
+           $array_archivo = $this->Model()->getRutaArchivoPublicacion($pk);
+           $where = "pk_publicacion = ?";
+           $data = array(addslashes(strip_tags($pk)));
+           if($this->Model()->setDelete('tb_publicaciones', $where, $data)){
+               $this->setBorrarArchivoPublicacion($array_archivo);
+               Spry::setMessageApplication("Publicacion eliminada");
+           }
+       }
+       private function setBorrarArchivoPublicacion($array){
+           foreach($array as $key => $val){
+                unlink($_SESSION['__APPLICATION_PATH'].$val['url_archivo']);
+           }
        }
    }

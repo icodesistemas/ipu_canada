@@ -1,3 +1,4 @@
+
 <br><div class="input-control text" style="width: 98%">
     <label>Título de la publicación:</label>
     <input type="text" maxlength="200" value="<?= isset($rs['datos']['titulo']) ? $rs['datos']['titulo'] : "" ?>" name="titulo_publicacion" placeholder="Titulo descriptivo" data-validate-func="required">
@@ -27,6 +28,4 @@
     <label>Descripción de la publicación:</label>
     <textarea id="textarea-descripcion" name="textarea-descripcion"><?= isset($rs['datos']['descripcion']) ? $rs['datos']['descripcion'] : "" ?></textarea>
 </div>
-
-<button style="position: absolute; right: 4px; top: -4px;">Guarar</button>
 
