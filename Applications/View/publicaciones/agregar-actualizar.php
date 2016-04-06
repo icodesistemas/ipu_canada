@@ -1,8 +1,8 @@
 <h1 class="text-light">Publicación<span class="mif-section place-right"></span></h1>
 <hr class="thin bg-grayLighter"><br>
 <button form = "form-publicador" class = "button primary"><span class="mif-floppy-disk"></span> Guardar...</button>
-<a href="/paginas/listado" class="button warning"><span class="mif-list2"></span> Listados</a>
-<a href="/paginas" class="button default"><span class="mif-layers"></span> Limpiar</a>
+<a href="/publicacion/listado" class="button warning"><span class="mif-list2"></span> Listados</a>
+<a href="/publicacion" class="button default"><span class="mif-layers"></span> Limpiar</a>
 <hr class="thin bg-grayLighter"><br>
 <div class="clear"></div>
 <br>
@@ -34,13 +34,13 @@
         </div>
     </div>
 
-
+    <input type="hidden" name="action" value="<?= $action ?>">
 
 </form>
 <form method="post" accept-charset="utf-8" name="form1">
-    <input name="hidden_data" id='hidden_data' type="hidden"/>
+    <input name="hidden_data" id='hidden_data' type="hidden">
     <input type="hidden" name="action" value="subir_imagen">
 </form>
 <form id="my_form" action="/Applications/Ajax/upload.php" target="form_target" method="post" enctype="multipart/form-data" style="width:0px;height:0;overflow:hidden">
-    <input name="image2" id = "imagen_upload2" type="file"  />
+    <input name="image2" id = "imagen_upload2" type="file">
 </form>

@@ -26,4 +26,5 @@
 <div class="icon-foto" id="photo5">
     <img src="/Public/img/ico-photo.png" onclick="uploadImage('photo5')">
 </div>
+
 <div class="clear"></div>

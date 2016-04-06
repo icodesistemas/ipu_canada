@@ -18,10 +18,11 @@
         }else{
             if($Spry->getParameterUrl(2) =='buscar' && is_numeric($Spry->getParameterUrl(3))){
 
-                $rs = $Spry->Services()->Controller->getDatosPagina($Spry->getParameterUrl(3));
-                $action = 'actualizar';
+                $rs = $Spry->Services()->Controller->getDatosPublicacion($Spry->getParameterUrl(3));
+
+                $action = 'actualizar-articulo';
             }else{
-                $action = 'guardar';
+                $action = 'guardar-articulo';
             }
             include 'agregar-actualizar.php';
         }
