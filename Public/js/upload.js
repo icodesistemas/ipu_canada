@@ -90,7 +90,7 @@ function handleFileSelect(evt) {
                         $('#barra-progreso').hide();
                         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                             $('#barra-progreso').hide();
-                            element = '<input type = "hidden" id = "input_'+objHtml+'" name = "galeria_image[]" values = "' + xmlhttp.responseText + '"> ';
+                            element = '<input type = "hidden" id = "input_'+objHtml+'" name = "galeria_image[]" value = "' + xmlhttp.responseText + '"> ';
                             deleteElement = '<i class="delete" onclick="eliminarImagen(\''+xmlhttp.responseText+'\',\''+objHtml+'\')">Eliminar</i>';
                             $('#' + objHtml).append(element+deleteElement);
                             $('#continuar-paso-2').show();

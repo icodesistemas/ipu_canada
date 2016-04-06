@@ -12,12 +12,18 @@
          */
         protected $Librery;
         private $message;
-        // ******* metodos que todo model debera tener
-        abstract public function getData($field, $where); // este sera para retornar datos al controlador
+
 
         // ************************************
         function __construct($librery) {
             $this->librery = $librery;
+        }
+        public function setBeginTrans(){
+            $this->DB()->setBeginTrans();
+        }
+        public function setCommit($commit){
+            $this->DB()->setCommit($commit);
+
         }
         public function DB(){
             return $this->librery;
@@ -65,6 +71,21 @@
             }catch(PDOException $e){
                 Spry::setMessageApplication($e->getMessage());
                 return false;
+            }
+        }
+        public function getData($table, $field, $where = null){
+            if(!empty($where)){
+                $sql = "select {$field} from {$table} where {$where}";
+            }else{
+                $sql = "select {$field} from {$table} ";
+            }
+
+            try{
+                $rs = $this->DB()->getArray($sql);
+                return $rs;
+            }catch(PDOException $e){
+                Spry::setMessageApplication($e->getMessage());
+                return null;
             }
         }
     }

@@ -47,7 +47,7 @@
                 }
             }else{
                 $this->Model()->setInsert('tb_paginas',$data);
-                Spry::setMessageApplication("Pagina actualizados con exito");
+                Spry::setMessageApplication("Pagina registrada con exito");
             }
 
         }

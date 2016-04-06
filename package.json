@@ -10,11 +10,13 @@
   },
   "model":{
       "paginas":"MPagina",
-      "idiomas":"MPagina"
+      "idiomas":"MPagina",
+      "publicacion":"MArticulo"
   },
   "controller":{
       "paginas":"CPagina",
-      "idiomas":"CPagina"
+      "idiomas":"CPagina",
+      "publicacion":"CArticulo"
   },
   "components": {
       "login" : true
