@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>IP</title>
+    <title>UPC Spanish in Edmonton</title>
+
+    <link rel="stylesheet" href="/Public/css/unslider.css">
     <link href="/Public/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" type="image/x-icon" href="/Public/img/logo.png">
+
 
     <script src="/Public/js/jquery.js"></script>
 </head>
@@ -30,9 +34,21 @@
                 </li>
 
             </ul>
-            <ul>
+            <ul class="icon-sociales">
                 <li>
-                    <img src="/Public/img/redes.png">
+                    <a href="https://www.facebook.com/upcSpanishinEdmonton/">
+                        <img src="/Public/img/icon-fb.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/user/UPCSPANISH">
+                        <img src="/Public/img/icon-tw.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/user/UPCSPANISH">
+                        <img src="/Public/img/icon-yt.png">
+                    </a>
                 </li>
             </ul>
         </div>
@@ -45,9 +61,14 @@
                 <a href="#">Inicio</a>
             </li>
             <li>
+                <a href="#">Directiva</a>
+            </li>
+            <li>
                 <a href="#">Nuestra Iglesia</a>
+
                 <ul class = "sub-menu">
                     <li>
+                        <p class="triangulo"></p>
                         <a href="/">Mision</a>
                     </li>
                     <li>
@@ -64,23 +85,21 @@
             <li>
                 <a href="#">Eventos</a>
             </li>
+            <li>
+                <a href="#">Noticias</a>
+            </li>
+            <li>
+                <a href="#">Contactanos</a>
+            </li>
         </ul>
     </nav>
 <section>
 
-    <div class="slider">
-        <ul class="slides">
-            <li class="slide">
-                <figure>
-                    <img src="/Public/img/slide1.jpg" alt="dribbble witches">
-                </figure>
-            </li>
-            <li class="slide">
-                <figure>
-                    <img src="/Public/img/slide2.jpg" alt="dribbble witches">
-                </figure>
-            </li>
-
+    <div class="my-slider">
+        <ul>
+            <li><img src="/Public/img/banners2.jpg" alt="dribbble witches"></li>
+            <li><img src="/Public/img/slide1.jpg" alt="dribbble witches"></li>
+            <li><img src="/Public/img/slide2.jpg" alt="dribbble witches"></li>
         </ul>
     </div>
 </section>
